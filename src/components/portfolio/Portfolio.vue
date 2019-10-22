@@ -1,6 +1,9 @@
 <template>
     <div>
-        <app-stock v-for="stock in stocks" :stock='stock'></app-stock>
+        <div v-if="stocks.length > 0">
+            <app-stock v-for="stock in stocks" :stock='stock'></app-stock>
+        </div>
+        <div v-else class="alert alert-warning center" role="alert">No stocks for trading!!!</div>    
     </div>
 </template>
 
@@ -19,4 +22,9 @@ export default {
     }
 }
 </script>
+<style scoped>
+    .center {
+        text-align: center;
+    }
+</style>
     

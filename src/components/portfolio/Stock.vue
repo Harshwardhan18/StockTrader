@@ -1,5 +1,5 @@
 <template>
-    <div class="col-sm-6 col-md-4">
+    <div class="col-sm-6 col-md-5">
         <div class="panel panel-primary">
             <div class="panel-heading">
                  <h5 class="panel-title">
@@ -9,13 +9,13 @@
             </div>
             <div class="panel-body">
                 <div class="pull-left">
-                    <input type="number" class="form-control" placeholder="quantity" v-model.number="quantity">
+                    <input type="number" class="form-control" :class="{danger:inSufficientQuantity}" placeholder="quantity" v-model.number="quantity">
                 </div>  
                 <div class="pull-right">
                     <button class="btn btn-danger"
                     @click="sellStock"
-                    :disabled = "quantity <= 0 || !Number.isInteger(quantity)"
-                    >SELL</button>  
+                    :disabled = "inSufficientQuantity ||quantity <= 0 || !Number.isInteger(quantity)"
+                    >{{inSufficientQuantity ? "Not Enough Shares" :'SELL'}}</button>  
                 </div>  
             </div>
         </div>
@@ -29,6 +29,11 @@ export default {
         return {
             quantity : 0
         };
+    },
+    computed: {
+        inSufficientQuantity(){
+            return this.quantity> this.stock.quantity;
+        }
     },
     methods: {
         ...mapActions({
@@ -47,4 +52,9 @@ export default {
     }
 }
 </script>
+<style scoped>
+    .danger{
+        border: 1px solid red;
+    }
+</style>
     
