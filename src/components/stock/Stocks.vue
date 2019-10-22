@@ -5,19 +5,14 @@
 </template>
 <script>
 import Stock from './Stock.vue';
-export default {
-    data(){
-        return {
-            stocks :[
-                {id: 1,name: 'Apple',price: 180},
-                {id: 2,name: 'Google',price: 150},
-                {id: 3,name: 'Samsung',price: 230},
-                {id: 4,name: 'Sony',price: 18},
-            ]
-        };
-    },
+export default { 
     components : {
         appStock : Stock
+    },
+    computed: {
+        stocks(){
+            return this.$store.getters.stocks;
+        }
     }
 }
 </script>
