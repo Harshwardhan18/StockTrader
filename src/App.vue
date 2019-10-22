@@ -1,18 +1,25 @@
 <template>
     <div class="container">
-        <app-home></app-home>
+        <app-header></app-header>
+            <div class="row">
+                <div class="col-md-12">
+                    <router-view></router-view>
+                </div>
+            </div>        
     </div>
 </template>
 
 <script>
-import Home from './components/Home.vue';
+import Header from './components/Header.vue';
 export default {
         components : {
-            appHome : Home
+            appHeader : Header
         }
     }
 </script>
 
 <style>
-
+    body{
+        margin : 10px auto;
+    }
 </style>
