@@ -14,7 +14,7 @@ export const loadData = ({commit}) => {
                     stockPortfolio
                 };
                 commit('SET_STOCKS',stocks);
-                commit('SET_PORTFOLIO',stockPortfolio);
+                commit('SET_PORTFOLIO',portfolio);
             } 
         });
 }
